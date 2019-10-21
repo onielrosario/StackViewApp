@@ -29,6 +29,7 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        topStackView.settingsButton.addTarget(self, action: #selector(handleSettingsButton), for: .touchUpInside)
         setupLayout()
         setupDummyCards()
     }
@@ -53,6 +54,11 @@ class HomeController: UIViewController {
         overallStackView.isLayoutMarginsRelativeArrangement = true
         overallStackView.layoutMargins = .init(top: 0, left: 8, bottom: 0, right: 8)
         overallStackView.bringSubviewToFront(cardDeckView)
+    }
+    
+    
+    @objc fileprivate func handleSettingsButton() {
+        
     }
 }
 

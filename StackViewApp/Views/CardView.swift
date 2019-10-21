@@ -143,6 +143,18 @@ class CardView: UIView {
         barStackView.arrangedSubviews[imageIndex].backgroundColor = .white
     }
     
+    fileprivate func setupImageObserver() {
+        cardViewModel.imageIndexObserver = { [weak self](idx, image) in
+            self?.imageView.image = image
+            
+            self?.barStackView.arrangedSubviews.forEach ({ (v) in
+                v.backgroundColor = self?.barDeselectedColor
+            })
+            
+            self?.barStackView.arrangedSubviews[idx].backgroundColor = .white
+        }
+    }
+    
     override func layoutSubviews() {
         gradient.frame = self.frame
     }

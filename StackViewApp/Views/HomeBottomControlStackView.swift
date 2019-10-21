@@ -22,10 +22,7 @@ class HomeBottomControlStackView: UIStackView {
             addArrangedSubview(button)
         }
     }
-    
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
 }
