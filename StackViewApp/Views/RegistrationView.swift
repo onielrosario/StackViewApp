@@ -9,44 +9,42 @@
 import UIKit
 
 class RegistrationView: UIView {
-    lazy var profileImage: UIImageView = {
-        let iv = UIImageView()
+    lazy var profileImageButton: UIButton = {
+        let iv = UIButton(type: .system)
+        iv.setTitle("Select Photo", for: .normal)
+        iv.titleLabel?.font = UIFont.systemFont(ofSize: 32, weight: .heavy)
+        iv.backgroundColor = .white
+        iv.setTitleColor(.black, for: .normal)
+        iv.heightAnchor.constraint(equalToConstant: 300).isActive = true
         iv.layer.cornerRadius = 15
-        iv.clipsToBounds = true
-        iv.contentMode = .scaleAspectFit
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.image = #imageLiteral(resourceName: "locationPlaceholder")
         return iv
     }()
     
-    lazy var usernameTextField: UITextField = {
-        let tf = UITextField()
+    lazy var usernameTextField: CustomTextField = {
+        let tf = CustomTextField(padding: 24, height: 40)
         tf.placeholder = "username..."
         tf.backgroundColor = .white
         tf.textAlignment = .center
-        tf.layer.cornerRadius = 15
-        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.layer.cornerRadius = 20
         return tf
     }()
     
-    lazy var emailTextField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "e.g: john.smith@gmail.com"
+    lazy var emailTextField: CustomTextField = {
+        let tf = CustomTextField(padding: 24, height: 40)
+            tf.placeholder = "e.g: john.smith@gmail.com"
          tf.backgroundColor = .white
         tf.textAlignment = .center
-        tf.layer.cornerRadius = 15
-        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.layer.cornerRadius = 20
         return tf
     }()
     
-    lazy var passwordTextField: UITextField = {
-        let tf = UITextField()
+    lazy var passwordTextField: CustomTextField = {
+        let tf = CustomTextField(padding: 24, height: 40)
         tf.isSecureTextEntry = true
         tf.placeholder = "password"
          tf.backgroundColor = .white
         tf.textAlignment = .center
-        tf.layer.cornerRadius = 15
-        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.layer.cornerRadius = 20
         return tf
     }()
     
@@ -58,59 +56,42 @@ class RegistrationView: UIView {
         button.tintColor = .white
         button.backgroundColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
         button.layer.cornerRadius = 15
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: 44).isActive = true
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
+        setupGradient()
         setupUI()
     }
     
     
     fileprivate func setupUI() {
-        //image
-        addSubview(profileImage)
-        NSLayoutConstraint.activate([
-            profileImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            profileImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
-            profileImage.widthAnchor.constraint(equalToConstant: 300),
-            profileImage.heightAnchor.constraint(equalToConstant: 300)
+        let stackView = UIStackView(arrangedSubviews: [
+        profileImageButton,
+        usernameTextField,
+        emailTextField,
+        passwordTextField,
+        registerButton
         ])
-        //textfields
-        addSubview(usernameTextField)
-        addSubview(emailTextField)
-        addSubview(passwordTextField)
-        NSLayoutConstraint.activate([
-            
-            usernameTextField.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 20),
-            usernameTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            usernameTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            usernameTextField.heightAnchor.constraint(equalToConstant: 40),
-            
-            emailTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 20),
-            emailTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            emailTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            emailTextField.heightAnchor.constraint(equalToConstant: 40),
-            
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
-            passwordTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            passwordTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        //button
-        addSubview(registerButton)
-        NSLayoutConstraint.activate([
-        registerButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
-        registerButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30),
-        registerButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -30),
-        registerButton.heightAnchor.constraint(equalToConstant: 50),
-        ])
-        
+     addSubview(stackView)
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: 50))
+        stackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     }
     
     
-    
+    fileprivate func setupGradient() {
+        let gradient = CAGradientLayer()
+        let topColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+        let bottomColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        gradient.colors = [topColor.cgColor, bottomColor.cgColor]
+        gradient.locations = [0,1]
+        layer.addSublayer(gradient)
+        gradient.frame = self.frame
+    }
     
     
     required init?(coder: NSCoder) {

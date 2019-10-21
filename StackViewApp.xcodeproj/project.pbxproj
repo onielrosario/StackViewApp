@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		09CF65F1235A75D300FB5169 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CF65F0235A75D300FB5169 /* RegistrationViewController.swift */; };
 		09CF65F3235D2C5D00FB5169 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CF65F2235D2C5D00FB5169 /* RegistrationView.swift */; };
+		09CF65F5235E3E1400FB5169 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CF65F4235E3E1400FB5169 /* CustomTextField.swift */; };
 		09EC78FD235003DB00F7F989 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EC78FC235003DB00F7F989 /* Extensions+UIView.swift */; };
 		09EC790023500A4D00F7F989 /* HomeButtonTopControlStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EC78FF23500A4D00F7F989 /* HomeButtonTopControlStackView.swift */; };
 		09EC7902235010C800F7F989 /* HomeBottomControlStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EC7901235010C800F7F989 /* HomeBottomControlStackView.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		09CF65F0235A75D300FB5169 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		09CF65F2235D2C5D00FB5169 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		09CF65F4235E3E1400FB5169 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		09EC78FC235003DB00F7F989 /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 		09EC78FF23500A4D00F7F989 /* HomeButtonTopControlStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonTopControlStackView.swift; sourceTree = "<group>"; };
 		09EC7901235010C800F7F989 /* HomeBottomControlStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlStackView.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				09EC7901235010C800F7F989 /* HomeBottomControlStackView.swift */,
 				09EC79032350174700F7F989 /* CardView.swift */,
 				09CF65F2235D2C5D00FB5169 /* RegistrationView.swift */,
+				09CF65F4235E3E1400FB5169 /* CustomTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09CF65F5235E3E1400FB5169 /* CustomTextField.swift in Sources */,
 				09EC790C23511A9C00F7F989 /* Advertiser.swift in Sources */,
 				09EC7907235058D100F7F989 /* AppUser.swift in Sources */,
 				09EC79042350174700F7F989 /* CardView.swift in Sources */,

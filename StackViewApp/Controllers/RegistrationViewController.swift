@@ -13,6 +13,17 @@ class RegistrationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(registrationView)
-        view.backgroundColor = .red
+       setupNotification()
+    }
+    
+    fileprivate func setupNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc fileprivate func handleKeyboardShow(notification: Notification) {
+        guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardFrame = value.cgRectValue
+        
+        self.view.transform = CGAffineTransform(scaleX: 0, y: -keyboardFrame.height)
     }
 }
